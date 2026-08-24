@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CJ 제일제당 UIUX 과제 프로토타입</title>
-    <link rel="stylesheet" href="./styles.css?v=20260824-final" />
+    <link rel="stylesheet" href="./styles.css?v=20260824-figma-fix" />
   </head>
   <body>
     <div class="device-shell" aria-label="Phone mockup">
@@ -12,23 +12,20 @@
       <div class="device-screen">
         <main class="phone" aria-label="CJ The Market prototype">
           <div class="phone-chrome" aria-label="고정 헤더">
-            <div class="statusbar">
-              <strong>5:13</strong>
-              <span aria-hidden="true">▮▮▮  Wi-Fi  76</span>
+            <img class="header-status-img" src="./assets/header-new-status.png" alt="" />
+            <img class="header-brand-img" src="./assets/header-new-brand.png" alt="CJ THE MARKET" />
+            <div class="header-tabs-img-wrap">
+              <img class="header-tabs-img" src="./assets/header-new-tabs.png" alt="" />
+              <nav class="global-hit-tabs" aria-label="상단 페이지 탭">
+                <button type="button" aria-label="홈"></button>
+                <button type="button" aria-label="실속장보기"></button>
+                <button type="button" data-page-target="hot" aria-label="핫딜"></button>
+                <button type="button" class="active" data-page-target="new" aria-label="신상"></button>
+                <button type="button" data-page-target="best" aria-label="베스트"></button>
+                <button type="button" aria-label="추석선물"></button>
+                <button type="button" aria-label="테이블"></button>
+              </nav>
             </div>
-            <div class="brandbar">
-              <strong>CJ THE MARKET</strong>
-              <button type="button" aria-label="검색">⌕</button>
-            </div>
-            <nav class="global-tabs" aria-label="상단 페이지 탭">
-              <button type="button">홈</button>
-              <button type="button">실속장보기<sup></sup></button>
-              <button type="button" data-page-target="hot">핫딜</button>
-              <button type="button" class="active" data-page-target="new">신상</button>
-              <button type="button" data-page-target="best">베스트</button>
-              <button type="button">추석선물<sup></sup></button>
-              <button type="button">테이블<sup></sup></button>
-            </nav>
           </div>
 
           <div class="page-stack">
@@ -118,7 +115,7 @@
                 <p class="eyebrow light">TODAY ONLY</p>
                 <h1>오늘 하루만 이 가격</h1>
                 <article class="today-card">
-                  <div class="today-image"><img src="./assets/trial-dumpling.png" alt="비비고 왕교자 패밀리팩" /></div>
+                  <div class="today-image"><img src="./assets/hot-today-products.png" alt="비비고 왕교자 패밀리팩" /></div>
                   <div class="countdown-pill"><strong data-countdown data-duration="29922">08:18:42</strong><span>남음</span></div>
                   <div class="today-info">
                     <p>비비고 왕교자 패밀리팩</p>
@@ -165,7 +162,7 @@
                   <article class="rank-hero">
                     <div class="confetti" aria-hidden="true"></div>
                     <span class="rank-ribbon">1</span>
-                    <img src="./assets/weekly-main.png" alt="햇반 유기농쌀밥" />
+                    <img src="./assets/best-hero-visual.png" alt="햇반 유기농쌀밥" />
                   </article>
                   <div class="rank-hero-info">
                     <p>[UPCYCLE]햇반 유기농쌀밥 210gX36개</p>
@@ -182,6 +179,6 @@
       </div>
     </div>
 
-    <script src="./script.js?v=20260824-final"></script>
+    <script src="./script.js?v=20260824-figma-fix"></script>
   </body>
 </html>

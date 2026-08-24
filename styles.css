@@ -153,7 +153,6 @@ em {
 
 .phone::-webkit-scrollbar,
 .horizontal-scroll::-webkit-scrollbar,
-.global-tabs::-webkit-scrollbar,
 .filter-tabs::-webkit-scrollbar {
   display: none;
 }
@@ -162,111 +161,101 @@ em {
   position: sticky;
   top: 0;
   z-index: 100;
+  height: 145px;
+  overflow: hidden;
   background: rgba(255, 255, 255, 0.98);
   box-shadow: 0 1px 0 var(--line);
+  transition: height 220ms ease;
 }
 
-.statusbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 34px;
-  padding: 0 14px;
-  background: #fff;
-  font-size: 14px;
-  line-height: 1;
+.phone.is-scrolled .phone-chrome {
+  height: 90px;
 }
 
-.statusbar strong {
-  font-size: 16px;
-  font-weight: 800;
+.header-status-img,
+.header-brand-img,
+.header-tabs-img {
+  width: 390px;
+  max-width: none;
+  object-fit: cover;
 }
 
-.statusbar span {
-  font-size: 12px;
-  font-weight: 800;
+.header-status-img {
+  height: 44px;
 }
 
-.brandbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.header-brand-img {
   height: 55px;
-  padding: 0 14px;
-  overflow: hidden;
   transition:
     height 220ms ease,
     opacity 180ms ease,
     transform 220ms ease;
 }
 
-.phone.is-scrolled .brandbar {
+.phone.is-scrolled .header-brand-img {
   height: 0;
   opacity: 0;
-  transform: translateY(-18px);
+  transform: translateY(-14px);
 }
 
-.brandbar strong {
-  color: var(--green);
-  font-size: 22px;
-  font-weight: 850;
-  line-height: 1;
-}
-
-.brandbar button {
-  width: 34px;
-  height: 34px;
-  color: #333;
-  font-size: 30px;
-  line-height: 30px;
-  cursor: pointer;
-}
-
-.global-tabs {
-  display: flex;
-  gap: 18px;
-  height: 56px;
-  padding: 0 20px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  background: #fff;
-  scrollbar-width: none;
-}
-
-.global-tabs button {
+.header-tabs-img-wrap {
   position: relative;
-  flex: 0 0 auto;
-  height: 56px;
-  color: #333;
-  font-size: 14px;
-  font-weight: 500;
-  white-space: nowrap;
+  height: 46px;
+}
+
+.header-tabs-img {
+  height: 46px;
+}
+
+.global-hit-tabs {
+  position: absolute;
+  inset: 0;
+}
+
+.global-hit-tabs button {
+  position: absolute;
+  top: 0;
+  height: 46px;
   cursor: pointer;
 }
 
-.global-tabs button.active {
-  color: #111;
-  font-weight: 850;
+.global-hit-tabs button:nth-child(1) {
+  left: 12px;
+  width: 36px;
 }
 
-.global-tabs button.active::after {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  background: #111;
-  content: "";
+.global-hit-tabs button:nth-child(2) {
+  left: 48px;
+  width: 84px;
 }
 
-.global-tabs sup {
-  position: absolute;
-  top: 17px;
-  right: -6px;
-  width: 4px;
-  height: 4px;
-  border-radius: 999px;
-  background: #e63323;
+.global-hit-tabs button:nth-child(3) {
+  left: 132px;
+  width: 48px;
+}
+
+.global-hit-tabs button:nth-child(4) {
+  left: 180px;
+  width: 48px;
+}
+
+.global-hit-tabs button:nth-child(5) {
+  left: 228px;
+  width: 62px;
+}
+
+.global-hit-tabs button:nth-child(6) {
+  left: 290px;
+  width: 82px;
+}
+
+.global-hit-tabs button:nth-child(7) {
+  left: 372px;
+  width: 50px;
+}
+
+.global-hit-tabs button.active {
+  cursor: default;
 }
 
 .page-stack {
@@ -324,6 +313,7 @@ em {
   width: calc(100% + 20px);
   overflow-x: auto;
   overflow-y: hidden;
+  padding-right: 20px;
   padding-bottom: 2px;
   cursor: grab;
   overscroll-behavior-inline: contain;
@@ -614,9 +604,38 @@ em {
   white-space: nowrap;
 }
 
+.badge.plus {
+  gap: 3px;
+  padding-left: 3px;
+}
+
+.badge.plus::before {
+  display: inline-grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #fff;
+  color: #11b67b;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1;
+  content: "+";
+}
+
+.badge.dark {
+  border-radius: 4px;
+  background: #303030;
+}
+
 .badge.orange {
   border-radius: 4px;
   background: var(--orange);
+}
+
+.badge.gold {
+  border-radius: 4px;
+  background: #c7b330;
 }
 
 .rank-flag {
@@ -825,18 +844,19 @@ em {
 .today-image {
   display: grid;
   place-items: center;
-  height: 265px;
+  height: 252px;
   background: #efeadd;
 }
 
 .today-image img {
-  width: 270px;
-  height: 230px;
-  object-fit: contain;
-  mix-blend-mode: multiply;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .countdown-pill {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -859,7 +879,7 @@ em {
 
 .today-info {
   display: grid;
-  gap: 14px;
+  gap: 13px;
   padding: 22px 20px 20px;
 }
 
@@ -884,11 +904,16 @@ em {
   display: flex;
   align-items: baseline;
   gap: 18px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .section-inline-title strong {
   font-size: 18px;
+}
+
+.urgent-section {
+  padding-top: 42px;
+  padding-bottom: 22px;
 }
 
 .best-heading {

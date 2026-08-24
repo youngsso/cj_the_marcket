@@ -1,6 +1,27 @@
 const phone = document.querySelector(".phone");
 const pageButtons = document.querySelectorAll("[data-page-target]");
 const pages = document.querySelectorAll(".prototype-page");
+const headerStatus = document.querySelector(".header-status-img");
+const headerBrand = document.querySelector(".header-brand-img");
+const headerTabs = document.querySelector(".header-tabs-img");
+
+const headerAssets = {
+  new: {
+    status: "./assets/header-new-status.png",
+    brand: "./assets/header-new-brand.png",
+    tabs: "./assets/header-new-tabs.png",
+  },
+  hot: {
+    status: "./assets/header-hot-status.png",
+    brand: "./assets/header-hot-brand.png",
+    tabs: "./assets/header-hot-tabs.png",
+  },
+  best: {
+    status: "./assets/header-best-status.png",
+    brand: "./assets/header-best-brand.png",
+    tabs: "./assets/header-best-tabs.png",
+  },
+};
 
 const products = [
   {
@@ -8,7 +29,8 @@ const products = [
     name: "백설 된장찌개 1분링 64G",
     image: "./assets/spotlight-ring.png",
     category: "meal today soup",
-    badge: "+ 15% 할인",
+    badge: "15% 할인",
+    badgeTone: "plus",
     price: "33,867",
     oldPrice: "47,700원",
     temp: "상온",
@@ -27,7 +49,8 @@ const products = [
     name: "쿠라콘 시오 콘부 47g",
     image: "./assets/spotlight-konbu.png",
     category: "snack gift",
-    badge: "+ 15% 할인",
+    badge: "15% 할인",
+    badgeTone: "plus",
     price: "33,867",
     oldPrice: "47,700원",
     temp: "상온",
@@ -107,7 +130,7 @@ const setDeviceScale = () => {
 const makeProductCard = (product, options = {}) => {
   const rank = options.rank ? `<span class="rank-flag ${options.rank > 3 ? "muted" : ""}">${options.rank}</span>` : "";
   const badge = product.badge
-    ? `<span class="badge ${product.badgeTone === "orange" ? "orange" : ""}">${product.badge}</span>`
+    ? `<span class="badge ${product.badgeTone || ""}">${product.badge}</span>`
     : "";
   const tags = product.id === "gochu"
     ? `<span class="gray-tag tag">무료배송</span>`
@@ -197,6 +220,12 @@ const initSwipe = () => {
 const activatePage = (target) => {
   pages.forEach((page) => page.classList.toggle("active", page.dataset.page === target));
   pageButtons.forEach((button) => button.classList.toggle("active", button.dataset.pageTarget === target));
+  const assets = headerAssets[target];
+  if (assets) {
+    headerStatus.src = assets.status;
+    headerBrand.src = assets.brand;
+    headerTabs.src = assets.tabs;
+  }
   phone.scrollTo({ top: 0, behavior: "auto" });
   phone.classList.remove("is-scrolled");
 };
